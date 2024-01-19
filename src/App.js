@@ -41,16 +41,20 @@ function App() {
 
   return (
     <>
-      <Header
-        getAllStudents={getAllStudents}
-        closeStudenForm={closeStudenForm}
-      />
+      <Header />
+      <br />
+      <br />
       <div style={{ textAlign: "center" }}>
         <Button onClick={() => setShowStudentForm((prev) => !prev)}>
           {showStudentForm ? "Close form" : "Add students"}
         </Button>
       </div>
-      {showStudentForm && <AddStudents />}
+      {showStudentForm && (
+        <AddStudents
+          getAllStudents={getAllStudents}
+          closeStudenForm={closeStudenForm}
+        />
+      )}
       <ReportCard studentData={studentData} deleteStudent={deleteStudent} />
     </>
   );

@@ -6,7 +6,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 function Header() {
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      className="bg-body-tertiary"
+      style={{ backgroundColor: "orangered" }}
+    >
       <Container>
         <Navbar.Brand href="#home">Report Card</Navbar.Brand>
       </Container>

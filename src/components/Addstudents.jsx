@@ -36,6 +36,8 @@ function FormExample({ getAllStudents, closeStudenForm }) {
     } catch (error) {
       console.log(error);
     }
+    getAllStudents();
+    closeStudenForm();
   };
 
   const [rollNo, setRollNo] = useState();
