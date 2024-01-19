@@ -4,9 +4,12 @@ import Header from "./components/Header";
 import ReportCard from "./components/ReportCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import AddStudents from "../src/components/Addstudents";
+import { Button } from "react-bootstrap";
 
 function App() {
   const [studentData, setstudentData] = useState();
+  const [showStudentForm, setShowStudentForm] = useState(false);
 
   const getAllStudents = async () => {
     try {
@@ -19,9 +22,25 @@ function App() {
   useEffect(() => {
     getAllStudents();
   }, []);
+  useEffect(() => {
+    getAllStudents();
+  }, [setShowStudentForm]);
+
+  const closeStudenForm = () => {
+    setShowStudentForm(false);
+  };
   return (
     <>
-      <Header />
+      <Header
+        getAllStudents={getAllStudents}
+        closeStudenForm={closeStudenForm}
+      />
+      <div style={{ textAlign: "center" }}>
+        <Button onClick={() => setShowStudentForm((prev) => !prev)}>
+          {showStudentForm ? "Close form" : "Add students"}
+        </Button>
+      </div>
+      {showStudentForm && <AddStudents />}
       <ReportCard studentData={studentData} />
     </>
   );
