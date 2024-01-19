@@ -1,10 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 
-const ReportCard = ({ studentData }) => {
-  console.log(studentData);
+const ReportCard = ({ studentData, deleteStudent }) => {
+  //   const deleteStudent = async (value) => {
+  //     const response = await axios.delete(
+  //       `http://localhost:4000/student/${value}`
+  //     );
+  //     console.log(response);
+  //   };
+
   return (
     <>
       <br />
@@ -22,11 +28,12 @@ const ReportCard = ({ studentData }) => {
               <th>English</th>
               <th>Hindi</th>
               <th>Total</th>
+              <th>Edit</th>
             </tr>
           </thead>
           {studentData &&
             studentData.map((data, i) => (
-              <tbody key={data.id}>
+              <tbody key={data._id}>
                 <tr>
                   <td>{i + 1}</td>
                   <td>{data?.rollNo}</td>
@@ -42,6 +49,17 @@ const ReportCard = ({ studentData }) => {
                       data?.biology +
                       data?.english +
                       data?.hindi}
+                  </td>
+                  <td>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      onClick={() => {
+                        deleteStudent(`${data._id}`);
+                      }}
+                    >
+                      Delete
+                    </Button>
                   </td>
                 </tr>
                 {/* <tr>

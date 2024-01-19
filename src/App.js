@@ -29,6 +29,16 @@ function App() {
   const closeStudenForm = () => {
     setShowStudentForm(false);
   };
+
+  const deleteStudent = async (value) => {
+    const response = await axios.delete(
+      `http://localhost:4000/student/${value}`
+    );
+    console.log(response);
+    getAllStudents();
+    alert("Student data succefully deleted");
+  };
+
   return (
     <>
       <Header
@@ -41,7 +51,7 @@ function App() {
         </Button>
       </div>
       {showStudentForm && <AddStudents />}
-      <ReportCard studentData={studentData} />
+      <ReportCard studentData={studentData} deleteStudent={deleteStudent} />
     </>
   );
 }
