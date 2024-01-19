@@ -13,7 +13,9 @@ function App() {
 
   const getAllStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/student");
+      const response = await axios.get(
+        "https://reportcard-backend.onrender.com/student"
+      );
       setstudentData(response.data);
     } catch (error) {
       console.log(error);
@@ -32,7 +34,7 @@ function App() {
 
   const deleteStudent = async (value) => {
     const response = await axios.delete(
-      `http://localhost:4000/student/${value}`
+      `https://reportcard-backend.onrender.com/student/${value}`
     );
     console.log(response);
     getAllStudents();

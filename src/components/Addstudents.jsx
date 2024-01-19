@@ -24,7 +24,7 @@ function FormExample({ getAllStudents, closeStudenForm }) {
       };
       const jsonData = JSON.stringify(data);
       const response = await axios.post(
-        "http://localhost:4000/student",
+        "https://reportcard-backend.onrender.com/student",
         jsonData,
         {
           headers: {
